@@ -28,11 +28,12 @@ jobs:
     - run:
         name: Run Tests
         command: npm test
+
 workflows:
   test_build_deploy:
     jobs:
       - test
-      - aws-ecr/build_and_push_image:
+      - aws-ecr/build-and-push-image:
           repo: slackcicd
           tag: "latest,v0.1.${CIRCLE_BUILD_NUM}"
           dockerfile: Dockerfile
