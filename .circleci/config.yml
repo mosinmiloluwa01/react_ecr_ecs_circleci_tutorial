@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@4.1.0
+  # node: circleci/node@4.1.0
 jobs:
   test:
     executor:
@@ -12,17 +12,17 @@ jobs:
     - restore_cache:
         key: dependency-cache-{{ checksum "package.json" }}
 
-    - node/install-packages:
-        pkg-manager: npm
+    # - node/install-packages:
+    #     pkg-manager: npm
     
     - run: 
           name: Install Dependencies
           command: npm install
 
-    - save_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
-        paths:
-          - node_modules
+    # - save_cache:
+    #     key: dependency-cache-{{ checksum "package.json" }}
+    #     paths:
+    #       - node_modules
 
     - run:
         name: Run Tests
